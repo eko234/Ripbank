@@ -1,0 +1,16 @@
+# frozen_string_literal: true
+
+source "https://rubygems.org"
+
+git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
+
+gem "thin"
+gem "puma"
+gem "aspector"
+gem "reel"
+gem "http"
+gem "webrick"
+gem "rake"
+gem "rspec"
+gem "sinatra"
+gem "msgpack"
