@@ -1,0 +1,9 @@
+### read
+GET http://localhost:4567/clients/1/ip
+### write
+PUT http://localhost:4567/clients/1/ip
+Content-Type: application/json
+
+{
+  "ip": 8
+}

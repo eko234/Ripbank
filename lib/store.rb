@@ -1,5 +1,4 @@
 require 'msgpack'
-require 'json'
 
 class StorePathProtector
   def initialize(valid_paths)
@@ -12,30 +11,28 @@ class StorePathProtector
 end
 
 class Store
-  def initialize(path_protector)
-    @path_protector = path_protector
+  def initialize(path, store_path_protector=nil)
+    @store_path_protector = store_path_protector
+    @path = path
   end
 
-  def protect(path:)
-    @path_protector.protect path
+  def protect
+    @store_path_protector ? (@store_path_protector.protect @path) : nil 
   end
   
-  def create(path:)
-    protect(path: path)
-    File.write(path, {}.to_msgpack) 
+  def create
+    protect
+    File.write(@path, {}.to_msgpack) 
   end
   
-  def read(path:)
-    protect(path: path)
-    file = File.open(path)
+  def read
+    protect
+    file = File.open(@path)
     MessagePack.unpack(file.read)
   end
 
-  def write(path:, data:)
-    protect(path: path)
-    File.write(path, data.to_msgpack)
+  def write(data)
+    protect
+    File.write(@path, data.to_msgpack)
   end
 end
-
-bank = Store.new(StorePathProtector.new(["ses"]))
-bank.create(path: "sus")
