@@ -1,9 +1,10 @@
 ### read
 GET http://localhost:4567/clients/1/ip
 ### write
-PUT http://localhost:4567/clients/1/ip
+PUT http://localhost:4567/1
 Content-Type: application/json
 
 {
-  "ip": 8
+  "ip": "192.168.0.1",
+  "port": "8090"
 }
