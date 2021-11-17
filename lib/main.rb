@@ -47,4 +47,3 @@ get '/:client_id' do
   port = result['port']
   "<a href=\"http://#{ip}\" target=\"_blank\" > link </a>"
 end
-
