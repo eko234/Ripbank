@@ -1,10 +1,29 @@
 ### read
-GET http://localhost:4567/clients/1/ip
+GET http://localhost:4567/api/clients
+Authorization: Bearer passpass 
+
 ### write
-PUT http://localhost:4567/1
+PATCH http://localhost:4567/api/clients/105
+Authorization: Bearer passpass 
 Content-Type: application/json
 
 {
-  "ip": "192.168.0.1",
+  "ip": "192.168.0.8",
   "port": "8090"
 }
+
+### register
+POST http://localhost:4567/api/clients
+Authorization: Bearer nicepass
+Content-Type: application/json
+
+{
+  "id": 19401,
+  "ip": "192.168.0.2",
+  "port": "8090",
+  "name": "corinto"
+}
+
+### delete
+DELETE http://localhost:4567/api/clients/105
+Authorization: Bearer nicepass
