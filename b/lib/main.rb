@@ -42,7 +42,7 @@ get '/api/clients/:id' do
   result.to_json
 end
 
-Post '/api/clients' do
+post '/api/clients' do
   result = @store.transaction do
     request.body.rewind
     data = (JSON.parse request.body.read).transform_values {|v| v.to_s}
